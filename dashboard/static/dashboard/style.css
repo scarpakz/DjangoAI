@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.answer-column {
+    overflow-y: auto;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    color: #bababa;
+    background: #0c0d0f;
+    padding: 10px;
+    border-radius: 10px;
+}
+.write-message-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+.write-message-column .field {
+    width: 100%;
+    padding: 20px;
+}

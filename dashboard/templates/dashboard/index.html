@@ -1,0 +1,48 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Dashboard</title>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+        >
+        <link rel="stylesheet" href="{% static 'dashboard/style.css' %}">
+    </head>
+    <body>
+        <h1 class="is-size-1">Django GPT - Integrated with Groq</h1>
+        <p>Jason Javier</p>
+        <div class="columns is-desktop">
+              <div class="column">
+                  <div class="write-message-column">
+                      <div class="field">
+                          <form action="{% url 'dashboard:text-search' %}" method="POST">
+                              {% csrf_token %}
+                              <label for="chatInput" class="label">Enter message</label>
+                              <div class="control">
+                                <input class="input" name="chatInput" id="chatInput" placeholder="Top 10 programming languages" />
+                              </div>
+                              <button class="button is-success mt-2">Submit</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+              <div class="column">
+                  {% if message %}
+                  <h3 class="is-size-3 answer-label">Answer</h3>
+                  {% endif %}
+                  <div class="answer-column">
+                      {% autoescape on %}
+                        <p>
+                            {{ message | linebreaksbr }}
+                        </p>
+                      {% endautoescape %}
+                  </div>
+              </div>
+        </div>
+    </body>
+</html>
